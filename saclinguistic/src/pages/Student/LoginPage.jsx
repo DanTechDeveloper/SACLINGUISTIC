@@ -1,20 +1,26 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BackgroundElement from "../../components/shared/BackgroundElement";
-
 export default function LoginPage() {
   const navigate = useNavigate();
   const [explodingWords, setExplodingWords] = useState([]);
+  const [name, setName] = useState("");
 
   useEffect(() => {
     const words = ["BOOM!", "ZAP!", "POW!", "WOW!", "READ!", "FUN!", "A+"];
-    const colors = ["text-red-500", "text-blue-600", "text-green-500", "text-purple-600", "text-orange-500"];
+    const colors = [
+      "text-red-500",
+      "text-blue-600",
+      "text-green-500",
+      "text-purple-600",
+      "text-orange-500",
+    ];
 
     const interval = setInterval(() => {
       const id = Date.now();
       const text = words[Math.floor(Math.random() * words.length)];
       const color = colors[Math.floor(Math.random() * colors.length)];
-      
+
       // Random position: Left (2-17%) or Right (83-98%) to avoid center form
       const isLeft = Math.random() > 0.5;
       const left = isLeft
@@ -33,12 +39,12 @@ export default function LoginPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleConfirmNavigation = (e) => {
     e.preventDefault();
-    const nameInput = document.getElementById("student-name");
-    const name = nameInput ? nameInput.value : "Friend";
+
     navigate("/greetings", { state: { name } });
   };
+
   return (
     <>
       <style>{`
@@ -48,6 +54,7 @@ export default function LoginPage() {
           100% { opacity: 0; transform: scale(2) rotate(0deg) translateY(-50px); }
         }
       `}</style>
+   
       <BackgroundElement>
         {/* <!-- Exploding Words Background --> */}
         <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -87,7 +94,11 @@ export default function LoginPage() {
               </p>
             </header>
             {/* <!-- BEGIN: LoginForm --> */}
-            <form action="#" class="space-y-4" onSubmit={handleSubmit}>
+            <form
+              action="#"
+              class="space-y-4"
+              onSubmit={handleConfirmNavigation}
+            >
               {/* <!-- Name Field Group --> */}
               <div class="flex flex-col gap-3">
                 <label
