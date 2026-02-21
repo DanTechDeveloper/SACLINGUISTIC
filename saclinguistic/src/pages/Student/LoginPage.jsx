@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import BackgroundElement from "../../components/shared/BackgroundElement";
 export default function LoginPage() {
   const navigate = useNavigate();
   const [explodingWords, setExplodingWords] = useState([]);
@@ -54,8 +53,8 @@ export default function LoginPage() {
           100% { opacity: 0; transform: scale(2) rotate(0deg) translateY(-50px); }
         }
       `}</style>
-   
-      <BackgroundElement>
+
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-400 via-pink-300 to-yellow-200 p-4 font-sans overflow-x-hidden">
         {/* <!-- Exploding Words Background --> */}
         <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
           {explodingWords.map((word) => (
@@ -189,7 +188,7 @@ export default function LoginPage() {
         </main>
         {/* <!-- END: MainContainer --> */}
         {/* <!-- Floating Decorative Elements (Bottom Right) --> */}
-      </BackgroundElement>
+      </div>
     </>
   );
 }
