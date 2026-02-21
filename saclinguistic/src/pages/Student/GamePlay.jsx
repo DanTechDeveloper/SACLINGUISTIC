@@ -60,7 +60,7 @@ export default function GamePlay() {
       const animationId = requestAnimationFrame(animateDroppings);
       return () => cancelAnimationFrame(animationId);
     }
-  }, []); // Empty dependencies as requested
+  }); // Empty dependencies as requested
 
   return (
     <>
