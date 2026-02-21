@@ -14,7 +14,7 @@ export default function Greetings() {
   const handleOnClick = () => {
     setIsLoading(true);
     setTimeout(() => {
-      alert("/dashboard");
+      navigate("/GamePlay");
     }, 3000);
   }
 
